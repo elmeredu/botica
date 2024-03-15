@@ -1,0 +1,3 @@
+- idea de negocio
+- tecnologias (version java, reportes, bd, arquitectura, modelo)
+- las tablas de las bases de datos (procesos, disparadores y creacion de tablas)
