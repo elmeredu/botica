@@ -1,0 +1,22 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "dist/lib/commons-beanutils-1.9.0.jar",
+        "dist/lib/commons-collections-3.2.1.jar",
+        "dist/lib/commons-digester-2.1.jar",
+        "dist/lib/commons-javaflow-20060411.jar",
+        "dist/lib/commons-logging-1.1.1.jar",
+        "dist/lib/DS_Desktop_Notify.jar",
+        "dist/lib/groovy-all-2.4.3.jar",
+        "dist/lib/itext-2.1.7.js4.jar",
+        "dist/lib/jasperreports-6.2.0.jar",
+        "dist/lib/jasperreports-fonts-6.2.0.jar",
+        "dist/lib/jasperreports-javaflow-6.2.0.jar",
+        "dist/lib/jcommon-1.0.23.jar",
+        "dist/lib/jfreechart-1.0.19.jar",
+        "dist/lib/mysql-connector-java-5.1.48.jar",
+        "dist/lib/png-encoder-1.5.jar",
+        "dist/lib/poi-3.10.1.jar",
+        "dist/lib/servlet-api-2.4.jar"
+    ]
+}

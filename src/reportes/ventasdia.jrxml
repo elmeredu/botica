@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="440" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="400" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3805820-82fe-4fad-9da3-9bef837eda03">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT (select producto.DES from producto WHERE producto.ID_PROD = d.PRODUCTO), SUM(d.CANTIDAD), SUM(d.SUBTOTAL)
+FROM venta v INNER JOIN detven d on v.ID_VEN =  d.VENTA
+where   MONTH(v.FECHAVEN) = MONTH(now())  AND YEAR(V.FECHAVEN) = year(now()) and DAY(v.FECHAVEN) = DAY(now())
+GROUP by d.PRODUCTO]]>
+	</queryString>
+	<field name="(select producto.DES from producto WHERE producto.ID_PROD = d.PRODUCTO)" class="java.lang.String"/>
+	<field name="SUM(d.CANTIDAD)" class="java.math.BigDecimal"/>
+	<field name="SUM(d.SUBTOTAL)" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="127" y="0" width="133" height="29" uuid="f7863bd4-af1c-4d57-9b83-abf6b0a65891"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Ventas del dia]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="358b4f97-97ab-4fcc-b68a-7fd2be3dd3b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="100" height="1" uuid="2c1466a8-be6d-4365-b1df-6f5ff824dbf2"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="100" height="1" uuid="61e256ca-c0e2-461c-9790-fb7b1acab1e5"/>
+			</line>
+			<line>
+				<reportElement x="100" y="1" width="1" height="19" uuid="ea5bd896-c727-41a8-a025-8194956a7064"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="21" uuid="3b0714bf-3d9d-4197-9013-92d840a3bf5f"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="acac4f88-58cd-4e25-9b1f-394629a7f50e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="0" width="100" height="20" uuid="a9c2b1ad-3b83-4c9c-aa67-4728acd94cce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="0" width="100" height="20" uuid="88fda99b-06ef-4dcd-af6d-bc11fc34fa83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="400" height="1" uuid="a99b6f2b-c776-4473-93f0-a81b3555d022"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="610abc0d-7497-4685-9a15-76c776e3cc7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{(select producto.DES from producto WHERE producto.ID_PROD = d.PRODUCTO)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="0" width="100" height="20" uuid="81b6d676-0461-4e57-80ee-c99618539e0d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SUM(d.CANTIDAD)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="0" width="100" height="20" uuid="889c3226-0b2f-4c98-8e6d-09eb5f23f13a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SUM(d.SUBTOTAL)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
