@@ -9,9 +9,9 @@ import java.sql.Statement;
 public class CADO {
 
     public Connection conectar() {
-        String URL = "jdbc:mysql://localhost:3306/botica";
-        String USUARIO = "root";
-        String PASSWORD = "12345678";
+        String URL = "";
+        String USUARIO = "";
+        String PASSWORD = "";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
